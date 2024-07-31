@@ -79,9 +79,9 @@ from pyseteleco.helpers.CatastroHelper import CatastroHelper
 ### Función consolidar_y_filtrar_viviendas
 Esta función consolida la información de viviendas con datos similares de la siguiente forma:
 
-- Agrupa las viviendas por características comunes (por ejemplo, puerta).
+- Agrupa las viviendas por características comunes (puerta).
 - Suma la superficie de las viviendas en cada grupo.
-- Filtra los grupos que tienen una superficie total que cumple con el criterio especificado (por ejemplo, al menos 50 metros cuadrados).
+- Filtra los grupos que tienen una superficie total que cumple con el criterio especificado (por defecto, al menos 50 metros cuadrados).
 - Retorna una lista de viviendas consolidadas que cumplen con el criterio de superficie, proporcionando un resumen consolidado por grupo.
 
 #### Ejemplo completo de uso
