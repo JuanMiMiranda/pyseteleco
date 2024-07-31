@@ -64,3 +64,87 @@ ref_cat = '28132A02500001'
 resultado = CatastroAPI.Consulta_DNPRC('', '', ref_cat)
 print(resultado)
 ```
+
+
+## Usando CatastroHelper
+CatastroHelper es una clase dentro de la biblioteca pyseteleco diseñada para facilitar el manejo y procesamiento de datos catastrales obtenidos a través de la API del Catastro. Su propósito principal es transformar y consolidar la información para proporcionar un análisis más claro y útil.
+
+
+### Importando CatastroHelper
+Primero, importa la clase CatastroHelper:
+```sh
+from pyseteleco.helpers.CatastroHelper import CatastroHelper
+```
+
+### Función consolidar_y_filtrar_viviendas
+Esta función consolida la información de viviendas con datos similares de la siguiente forma:
+
+- Agrupa las viviendas por características comunes (por ejemplo, puerta).
+- Suma la superficie de las viviendas en cada grupo.
+- Filtra los grupos que tienen una superficie total que cumple con el criterio especificado (por ejemplo, al menos 50 metros cuadrados).
+- Retorna una lista de viviendas consolidadas que cumplen con el criterio de superficie, proporcionando un resumen consolidado por grupo.
+
+#### Ejemplo completo de uso
+```sh
+from pyseteleco.apis.CatastroAPI import CatastroAPI
+from pyseteleco.helpers.CatastroHelper import CatastroHelper
+
+# Consulta de referencia catastral
+ref_cat = '28132A02500001'
+resultado = CatastroAPI.Consulta_DNPRC('', '', ref_cat)
+
+# Creación de la instancia de CatastroHelper
+helper = CatastroHelper(resultado)
+
+# Consolidación y filtrado de viviendas
+viviendas_list = helper.consolidar_y_filtrar_viviendas()
+print(viviendas_list)
+
+```
+
+#### Ejemplo completo de resultado
+
+from pyseteleco.helpers.CatastroHelper import CatastroHelper
+
+# Supongamos que tenemos una respuesta JSON con datos catastrales
+
+```sh
+json_response = {
+    "consulta_dnp": {
+        "bico": {
+            "lcons": {
+                "cons": [
+                    {"lcd": "VIVIENDA", "dfcons": {"stl": "30"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "01"}}}},
+                    {"lcd": "VIVIENDA", "dfcons": {"stl": "25"}, "dt": {"lourb": {"loint": {"es": "2", "pu": "01"}}}},
+                    {"lcd": "VIVIENDA", "dfcons": {"stl": "45"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "04"}}}},
+                    {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}},
+                    {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}}
+                ]
+            }
+        }
+    }
+}
+
+# Crear una instancia de CatastroHelper
+helper = CatastroHelper(json_response)
+
+# Llamar al método para consolidar y filtrar viviendas
+viviendas_consolidadas = helper.consolidar_y_filtrar_viviendas()
+
+print(viviendas_consolidadas)
+# Resultado esperado: 
+"""
+[
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 55}, "dt": {"lourb": {"loint": {"pu": "01"}}}, "cons": [
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "30"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "01"}}}},
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "25"}, "dt": {"lourb": {"loint": {"es": "2", "pu": "01"}}}}
+                        ]},
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 100}, "dt": {"lourb": {"loint": {"pu": "05"}}}, "cons": [
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}},
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}}
+                        ]}
+]
+"""
+
+
+```
