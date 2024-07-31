@@ -19,6 +19,7 @@ Para usar `pyseteleco`, primero necesitas instalar la biblioteca. Puedes hacerlo
 
 ```sh
 pip install pyseteleco
+
 ```
 
 ## Usando CatastroAPI
