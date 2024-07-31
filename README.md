@@ -104,11 +104,12 @@ print(viviendas_list)
 
 #### Ejemplo completo de resultado
 
+```sh
 from pyseteleco.helpers.CatastroHelper import CatastroHelper
 
 # Supongamos que tenemos una respuesta JSON con datos catastrales
 
-```sh
+
 json_response = {
     "consulta_dnp": {
         "bico": {
