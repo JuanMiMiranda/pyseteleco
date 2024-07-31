@@ -3,7 +3,6 @@
 ## Introducción
 
 La biblioteca `pyseteleco` es una herramienta diseñada para interactuar con diversos servicios catastrales y datos relacionados. 
-Esta guía te mostrará cómo usar dos de sus funciones clave: `CatastroAPI.Consulta_DNPRC` y `CatastroHelper.consolidar_y_filtrar_viviendas`.
 
 Listado de Funcionalidades:
 - CatastroAPI
@@ -35,15 +34,12 @@ from pyseteleco.apis.CatastroAPI import CatastroAPI
 
 Proporciona los datos catastrales no protegidos de un inmueble
 
-        Este servicio es idéntico al de "Consulta de DATOS CATASTRALES NO
-        PROTEGIDOS de un inmueble identificado por su localización" en todo
-        excepto en los parámetros de entrada.
-
+Este servicio es idéntico al de "Consulta de DATOS CATASTRALES NO PROTEGIDOS de un inmueble identificado por su localización" en todo excepto en los parámetros de entrada.
         :param str: Nombre de la provincia
         :param str: Nombre del municipio
         :param str: Referencia catastral
         :return: Retorna un dicionario con los datos de la consutla
-        :rtype: dict
+        :rtype: str
 
 Para llamar a Consulta_DNPRC, necesitas proporcionar los parámetros provincia, municipio y ref_cat. En este ejemplo, dejamos provincia y municipio como cadenas vacías y proporcionamos una referencia catastral (ref_cat).
 
