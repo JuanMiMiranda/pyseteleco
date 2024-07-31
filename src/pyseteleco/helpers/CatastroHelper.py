@@ -18,24 +18,31 @@ class CatastroHelper:
         viviendas_consolidadas = {}
 
         for vivienda in viviendas:
-            # Extraer la puerta
+            # Extraer la puerta y los detalles
             puerta = vivienda.get('dt', {}).get('lourb', {}).get('loint', {}).get('pu', '')
-
-            # Inicializar la superficie si la puerta no está en el diccionario
             if puerta not in viviendas_consolidadas:
                 viviendas_consolidadas[puerta] = {
                     'lcd': 'VIVIENDA',
                     'dfcons': {'stl': 0},
-                    'dt': {'lourb': {'loint': {'pu': puerta}}}
+                    'dt': {'lourb': {'loint': {'pu': puerta}}},
+                    'cons': []  # Detalle donde añadiremos las unidades constructivas que conforman cada vivienda (plantas)
                 }
+
+            # Agregar los detalles de la vivienda a la lista de detalles de la puerta correspondiente
+            viviendas_consolidadas[puerta]['cons'].append(vivienda)
 
             # Sumar la superficie de la vivienda actual
             viviendas_consolidadas[puerta]['dfcons']['stl'] += int(vivienda['dfcons']['stl'])
 
         # Filtrar las viviendas consolidadas que tienen superficie total >= 50 metros
         viviendas_filtradas = [
-            vivienda for vivienda in viviendas_consolidadas.values()
-            if vivienda['dfcons']['stl'] >= 50
+            {
+                **vivienda,
+                'dfcons': {'stl': total_superficie},
+                'cons': vivienda['cons']
+            }
+            for puerta, vivienda in viviendas_consolidadas.items()
+            if (total_superficie := vivienda['dfcons']['stl']) >= 50
         ]
 
         return viviendas_filtradas

@@ -43,10 +43,20 @@ class TestCatastroHelper:
         self.helper = CatastroHelper(self.json_response)
 
     def test_consolidar_y_filtrar_viviendas(self):
+        """
+        Se esperan dos viviendas
+        :return:
+        """
         result = self.helper.consolidar_y_filtrar_viviendas()
         expected = [
-            {"lcd": "VIVIENDA", "dfcons": {"stl": 55}, "dt": {"lourb": {"loint": {"pu": "01"}}}},
-            {"lcd": "VIVIENDA", "dfcons": {"stl": 100}, "dt": {"lourb": {"loint": {"pu": "05"}}}}
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 55}, "dt": {"lourb": {"loint": {"pu": "01"}}}, "cons": [
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "30"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "01"}}}},
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "25"}, "dt": {"lourb": {"loint": {"es": "2", "pu": "01"}}}}
+                        ]},
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 100}, "dt": {"lourb": {"loint": {"pu": "05"}}}, "cons": [
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}},
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "50"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}}
+                        ]}
         ]
         assert result == expected
 

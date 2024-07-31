@@ -61,8 +61,17 @@ class TestCatastroHelper:
     def test_consolidar_y_filtrar_viviendas(self):
         result = self.helper.consolidar_y_filtrar_viviendas()
         expected = [
-            {"lcd": "VIVIENDA", "dfcons": {"stl": 55}, "dt": {"lourb": {"loint": {"pu": "01"}}}},
-            {"lcd": "VIVIENDA", "dfcons": {"stl": 75}, "dt": {"lourb": {"loint": {"pu": "05"}}}}
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 55}, "dt": {"lourb": {"loint": {"pu": "01"}}}, "cons": [
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "30"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "01"}}}},
+                            {"lcd": "VIVIENDA", "dfcons": {"stl": "25"}, "dt": {"lourb": {"loint": {"es": "2", "pu": "01"}}}}
+                        ]},
+            {"lcd": "VIVIENDA", "dfcons": {"stl": 75}, "dt": {"lourb": {"loint": {"pu": "05"}}},
+                 "cons": [
+                     {"lcd": "VIVIENDA", "dfcons": {"stl": "30"}, "dt": {"lourb": {"loint": {"es": "1", "pu": "05"}}}},
+                     {"lcd": "VIVIENDA", "dfcons": {"stl": "20"}, "dt": {"lourb": {"loint": {"es": "2", "pu": "05"}}}},
+                     {"lcd": "VIVIENDA", "dfcons": {"stl": "25"}, "dt": {"lourb": {"loint": {"es": "3", "pu": "05"}}}}
+                 ]
+             }
         ]
         assert result == expected
 
