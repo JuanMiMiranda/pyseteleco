@@ -248,4 +248,4 @@ venv.bak/
 .idea/
 
 # pyseteleco egg-info
-pyseteleco.egg-info/
+src/pyseteleco.egg-info/
