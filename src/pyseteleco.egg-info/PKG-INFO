@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: pyseteleco
-Version: 0.0.3
-Summary: Modulo SETELECO
-Home-page: https://github.com/JuanMiMiranda/pyseteleco
-Author: JuanMi
-Author-email: juan.miranda@digital.gob.es
-License: GPLv3
-Requires-Dist: pycatastro
