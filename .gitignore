@@ -1,0 +1,251 @@
+# Ignorar archivos de entorno virtual
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignorar archivos y carpetas de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Ignorar archivos de configuración de IDEs
+.idea/
+.vscode/
+*.swp
+
+# Ignorar archivos de compilación
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Ignorar archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos temporales
+*.tmp
+*.bak
+*.swp
+
+# Ignorar archivos de prueba y cobertura
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Ignorar archivos específicos de herramientas de empaquetado
+*.tar.gz
+*.zip
+*.rar
+
+# Ignorar archivos de configuración de editor
+*.sublime-workspace
+*.sublime-project
+Descripción de las secciones:
+Archivos de entorno virtual: Ignora directorios de entornos virtuales para evitar subir dependencias específicas del entorno.
+Archivos y carpetas de Python: Ignora archivos generados por Python que no son necesarios para el control de versiones.
+Archivos de configuración de IDEs: Ignora configuraciones específicas de IDEs y editores.
+Archivos de compilación: Ignora archivos y carpetas generados durante el proceso de construcción del proyecto.
+Archivos específicos del sistema operativo: Ignora archivos de metadatos específicos del sistema operativo.
+Archivos temporales: Ignora archivos temporales que pueden ser generados durante el desarrollo.
+Archivos de prueba y cobertura: Ignora archivos generados por herramientas de prueba y cobertura de código.
+Archivos específicos de herramientas de empaquetado: Ignora archivos generados por herramientas de empaquetado y distribución.
+Archivos de configuración de editor: Ignora configuraciones específicas de editores de texto.
+Este archivo .gitignore te ayudará a mantener tu repositorio limpio y a evitar subir archivos innecesarios. Si tienes necesidades específicas adicionales, puedes ajustar el contenido en consecuencia.
+
+
+
+
+
+pyseteleco.egg-info puedo excluirlo?
+ChatGPT
+Sí, puedes y debes excluir el directorio pyseteleco.egg-info en tu archivo .gitignore. Este directorio es generado automáticamente durante la instalación del paquete y contiene metadatos del paquete que no son necesarios para el control de versiones.
+
+Aquí tienes el archivo .gitignore actualizado con la exclusión del directorio pyseteleco.egg-info:
+
+plaintext
+Copiar código
+# Ignorar archivos de entorno virtual
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignorar archivos y carpetas de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Ignorar archivos de configuración de IDEs
+.idea/
+.vscode/
+*.swp
+
+# Ignorar archivos de compilación
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Ignorar archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos temporales
+*.tmp
+*.bak
+*.swp
+
+# Ignorar archivos de prueba y cobertura
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Ignorar archivos específicos de herramientas de empaquetado
+*.tar.gz
+*.zip
+*.rar
+
+# Ignorar archivos de configuración de editor
+*.sublime-workspace
+*.sublime-project
+
+# Ignorar pyseteleco.egg-info
+pyseteleco.egg-info/
+Este archivo .gitignore actualizado ayudará a mantener tu repositorio limpio y evitará que subas archivos y directorios generados automáticamente que no son necesarios para el control de versiones.
+
+Pues con eso no me exluye ni pyseteleco.egg-info ni .vscode/
+ChatGPT
+Parece que debería funcionar, pero quizás haya algo específico en tu configuración. Asegúrate de que el archivo .gitignore esté en el directorio raíz de tu proyecto y no en algún subdirectorio.
+
+Aquí está un archivo .gitignore mejorado para asegurarse de que excluye los directorios pyseteleco.egg-info y .vscode:
+
+plaintext
+Copiar código
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# vscode
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+
+# pyseteleco egg-info
+pyseteleco.egg-info/
